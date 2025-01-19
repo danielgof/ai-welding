@@ -1,0 +1,78 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About AI' },
+  { href: '/quizzes', label: 'Quizzes' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/contact', label: 'Contact' }
+];
+---
+
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">
+      <a href="/">AI Quizzes</a>
+    </div>
+    <ul class="nav-links">
+      {links.map(link => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+    <div class="search-bar">
+      <input type="text" placeholder="Search quizzes..." aria-label="Search" />
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0a0a23;
+    color: #fff;
+  }
+  .container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6f61;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .nav-links a:hover {
+    color: #ff6f61;
+  }
+  .search-bar {
+    margin-left: auto;
+  }
+  .search-bar input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    .search-bar {
+      display: none;
+    }
+  }
+</style>

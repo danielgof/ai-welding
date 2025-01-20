@@ -1,0 +1,47 @@
+---
+const { title } = Astro.props;
+const { description } = Astro.props;
+// const questions = Astro.props;
+---
+
+<li>
+  <div class="grid-itemr">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <a class="start-quiz-btn" href={"/" + title.replaceAll(" ", "_").toLowerCase()}>Start Quiz</a>
+  </div>
+</li>
+
+<style>
+  li {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: linear-gradient(135deg, #3245ff, #bc52ee);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .grid-item h2 {
+    margin-bottom: 10px;
+    color: white;
+  }
+  .section {
+    padding: 2rem;
+  }
+  .section h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1.5rem;
+  }
+</style>

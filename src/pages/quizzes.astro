@@ -1,0 +1,81 @@
+---
+import QuizCard from "../components/QuizCard.astro";
+import LayoutExternal from "../layouts/LayoutExternal.astro";
+const quizzes = [
+  {
+    title: "Introduction to AI",
+    description:
+      "This section provides an overview of artificial intelligence, its history, and key concepts.",
+  },
+  {
+    title: "Python Fundamentals for Welding Engineers",
+    description:
+      "This section covers the fundamentals of Python programming with a focus on its application in welding engineering.",
+  },
+  {
+    title: "Linear Regression for Welding Data Analysis",
+    description:
+      "This section explores linear regression techniques and their application to analyze welding data.",
+  },
+  {
+    title: "Basic AI Algorithms for Welding Engineers",
+    description:
+      "This section introduces key AI algorithms, including supervised, unsupervised, and reinforcement learning methods, with a focus on their application in welding engineering.",
+  },
+];
+---
+
+<LayoutExternal>
+  <section class="course-grid">
+    <ul class="grid-container">
+      {
+        quizzes.map((quiz) => (
+          <QuizCard title={quiz.title} description={quiz.description} />
+        ))
+      }
+    </ul>
+  </section>
+</LayoutExternal>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 1rem 0;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem; /* Adjusts spacing between grid items */
+    justify-items: stretch; /* Ensures rows are filled completely */
+  }
+  li {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: linear-gradient(135deg, #3245ff, #bc52ee);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .grid-item h2 {
+    margin-bottom: 10px;
+    color: white;
+  }
+  .section {
+    padding: 2rem;
+  }
+  .section h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1.5rem;
+  }
+</style>

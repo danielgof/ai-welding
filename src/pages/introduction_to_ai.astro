@@ -1,0 +1,267 @@
+---
+const questions = [
+  {
+    question: "What is AI?",
+    options: [
+      "The ability of machines to simulate human intelligence.",
+      "Any computer program.",
+      "Only robots.",
+    ],
+    correctAnswer: "The ability of machines to simulate human intelligence.",
+  },
+  {
+    question: "Which of the following is NOT a key characteristic of AI?",
+    options: ["Learning", "Reasoning", "Sleeping", "Problem-solving"],
+    correctAnswer: "Sleeping",
+  },
+  {
+    question: 'When did the term "Artificial Intelligence" first appear?',
+    options: ["1950s", "1980s", "2000s"],
+    correctAnswer: "1950s",
+  },
+  {
+    question: "What is Narrow AI?",
+    options: [
+      "AI that can perform a single task or a narrow range of tasks.",
+      "AI that is as intelligent as humans.",
+      "AI that surpasses human intelligence.",
+    ],
+    correctAnswer:
+      "AI that can perform a single task or a narrow range of tasks.",
+  },
+  {
+    question:
+      "Which of the following is an example of an AI application in manufacturing?",
+    options: [
+      "Self-driving cars",
+      "Predictive maintenance",
+      "Social media algorithms",
+    ],
+    correctAnswer: "Predictive maintenance",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to AI Quiz</title>
+  </head>
+  <body>
+    <h1>Introduction to Artificial Intelligence Quiz</h1>
+
+    <ol>
+      {
+        questions.map((question, index) => (
+          <li>
+            <h3>{question.question}</h3>
+            <ol type="a">
+              {question.options.map((option, optionIndex) => (
+                <li>
+                  <input type="radio" name={`q${index + 1}`} value={option} />
+                  {option}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))
+      }
+    </ol>
+
+    <button class="alert">Submit Quiz</button>
+
+    <div id="result"></div>
+  </body>
+</html>
+
+<script>
+  const questions = [
+    {
+      question: "What is AI?",
+      options: [
+        "The ability of machines to simulate human intelligence.",
+        "Any computer program.",
+        "Only robots.",
+      ],
+      correctAnswer: "The ability of machines to simulate human intelligence.",
+    },
+    {
+      question: "Which of the following is NOT a key characteristic of AI?",
+      options: ["Learning", "Reasoning", "Sleeping", "Problem-solving"],
+      correctAnswer: "Sleeping",
+    },
+    {
+      question: 'When did the term "Artificial Intelligence" first appear?',
+      options: ["1950s", "1980s", "2000s"],
+      correctAnswer: "1950s",
+    },
+    {
+      question: "What is Narrow AI?",
+      options: [
+        "AI that can perform a single task or a narrow range of tasks.",
+        "AI that is as intelligent as humans.",
+        "AI that surpasses human intelligence.",
+      ],
+      correctAnswer:
+        "AI that can perform a single task or a narrow range of tasks.",
+    },
+    {
+      question:
+        "Which of the following is an example of an AI application in manufacturing?",
+      options: [
+        "Self-driving cars",
+        "Predictive maintenance",
+        "Social media algorithms",
+      ],
+      correctAnswer: "Predictive maintenance",
+    },
+  ];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const submitButton =
+      document.querySelector<HTMLButtonElement>("button.alert");
+    const quizContainer = document.querySelector("ol"); // Quiz container
+    const resultDiv = document.getElementById("result");
+
+    if (submitButton && quizContainer && resultDiv) {
+      submitButton.addEventListener("click", () => {
+        let score = 0;
+
+        questions.forEach((question, index) => {
+          const selectedOption = document.querySelector<HTMLInputElement>(
+            `input[name="q${index + 1}"]:checked`
+          );
+
+          if (
+            selectedOption &&
+            selectedOption.value === question.correctAnswer
+          ) {
+            score++;
+          }
+        });
+
+        // Replace the quiz content with the result
+        quizContainer.innerHTML = `
+          <div class="card">
+            <h2>Quiz Completed!</h2>
+            <p>You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.</p>
+            <p>Thank you for participating in the Introduction to AI Quiz!</p>
+            <a href="/" class="home" style="
+              display: block;
+              width: 200px;
+              margin: 2rem auto;
+              padding: 0.75rem 1rem;
+              font-size: 1rem;
+              color: #fff;
+              background: linear-gradient(135deg, #3245ff, #bc52ee);
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+              transition: all 0.3s ease-in-out;">
+              Get Back to the Home Page
+              </a>
+          </div>
+        `;
+
+        // Optionally, style the result box
+        resultDiv.textContent = "";
+        submitButton.remove(); // Hide the button after submission
+      });
+    } else {
+      console.error("Submit button or quiz container is missing in the DOM.");
+    }
+  });
+</script>
+
+
+<style>
+  /* General Styles */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 2rem;
+    color: #3245ff;
+    font-size: 2.5rem;
+  }
+
+  ol {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 1.5rem;
+  }
+
+  li h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #3245ff;
+  }
+
+  li ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.5rem;
+  }
+
+  li ol li {
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="radio"] {
+    margin-right: 0.5rem;
+  }
+
+  /* Button Styles */
+  button.alert {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #3245ff, #bc52ee);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  button.alert:hover {
+    background: linear-gradient(135deg, #1f3bff, #a742db);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Result Box */
+  #result {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #28a745;
+    margin-top: 2rem;
+  }
+
+  /* Card Style */
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem auto;
+    max-width: 800px;
+  }
+</style>
+

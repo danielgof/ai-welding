@@ -20,6 +20,53 @@ const questions = [
     correctAnswer: "1950s",
   },
   {
+    question: 'Who is known as the "Father of AI"?',
+    options: ["Alan Turing", "John McCarthy", "Elon Musk"],
+    correctAnswer: "John McCarthy",
+  },
+  {
+    question: "Which event marked the birth of AI as a field?",
+    options: [
+      "The Dartmouth Conference in 1956",
+      "The invention of the computer",
+      "The launch of the first robot",
+    ],
+    correctAnswer: "The Dartmouth Conference in 1956",
+  },
+  {
+    question: "What breakthrough in AI occurred during the 2010s?",
+    options: [
+      "Advancements in Deep Learning and Neural Networks",
+      "Invention of the internet",
+      "Development of the first transistor",
+    ],
+    correctAnswer: "Advancements in Deep Learning and Neural Networks",
+  },
+  {
+    question: "What is Narrow AI?",
+    options: [
+      "AI designed to perform a specific task.",
+      "AI that mimics human intelligence entirely.",
+      "AI that can surpass human intelligence.",
+    ],
+    correctAnswer: "AI designed to perform a specific task.",
+  },
+  {
+    question: "What is the main difference between General AI and Super AI?",
+    options: [
+      "General AI equals human intelligence, Super AI surpasses it.",
+      "General AI is task-specific, Super AI is task-agnostic.",
+      "General AI is slower than Super AI.",
+    ],
+    correctAnswer:
+      "General AI equals human intelligence, Super AI surpasses it.",
+  },
+  {
+    question: "Which type of AI is widely used today?",
+    options: ["Narrow AI", "General AI", "Super AI"],
+    correctAnswer: "Narrow AI",
+  },
+  {
     question: "What is Narrow AI?",
     options: [
       "AI that can perform a single task or a narrow range of tasks.",
@@ -38,6 +85,34 @@ const questions = [
       "Social media algorithms",
     ],
     correctAnswer: "Predictive maintenance",
+  },
+  {
+    question:
+      "Which AI technology is commonly used in manufacturing for quality control?",
+    options: [
+      "Computer Vision",
+      "Natural Language Processing",
+      "Speech Recognition",
+    ],
+    correctAnswer: "Computer Vision",
+  },
+  {
+    question: "How is predictive maintenance achieved using AI?",
+    options: [
+      "By analyzing data to predict equipment failures.",
+      "By replacing all manual work with robots.",
+      "By scheduling maintenance manually.",
+    ],
+    correctAnswer: "By analyzing data to predict equipment failures.",
+  },
+  {
+    question: "What is a key benefit of AI in supply chain optimization?",
+    options: [
+      "Reducing costs by optimizing inventory and logistics.",
+      "Eliminating all human jobs.",
+      "Building new factories automatically.",
+    ],
+    correctAnswer: "Reducing costs by optimizing inventory and logistics.",
   },
 ];
 ---
@@ -97,6 +172,53 @@ const questions = [
       correctAnswer: "1950s",
     },
     {
+      question: 'Who is known as the "Father of AI"?',
+      options: ["Alan Turing", "John McCarthy", "Elon Musk"],
+      correctAnswer: "John McCarthy",
+    },
+    {
+      question: "Which event marked the birth of AI as a field?",
+      options: [
+        "The Dartmouth Conference in 1956",
+        "The invention of the computer",
+        "The launch of the first robot",
+      ],
+      correctAnswer: "The Dartmouth Conference in 1956",
+    },
+    {
+      question: "What breakthrough in AI occurred during the 2010s?",
+      options: [
+        "Advancements in Deep Learning and Neural Networks",
+        "Invention of the internet",
+        "Development of the first transistor",
+      ],
+      correctAnswer: "Advancements in Deep Learning and Neural Networks",
+    },
+    {
+      question: "What is Narrow AI?",
+      options: [
+        "AI designed to perform a specific task.",
+        "AI that mimics human intelligence entirely.",
+        "AI that can surpass human intelligence.",
+      ],
+      correctAnswer: "AI designed to perform a specific task.",
+    },
+    {
+      question: "What is the main difference between General AI and Super AI?",
+      options: [
+        "General AI equals human intelligence, Super AI surpasses it.",
+        "General AI is task-specific, Super AI is task-agnostic.",
+        "General AI is slower than Super AI.",
+      ],
+      correctAnswer:
+        "General AI equals human intelligence, Super AI surpasses it.",
+    },
+    {
+      question: "Which type of AI is widely used today?",
+      options: ["Narrow AI", "General AI", "Super AI"],
+      correctAnswer: "Narrow AI",
+    },
+    {
       question: "What is Narrow AI?",
       options: [
         "AI that can perform a single task or a narrow range of tasks.",
@@ -116,6 +238,34 @@ const questions = [
       ],
       correctAnswer: "Predictive maintenance",
     },
+    {
+      question:
+        "Which AI technology is commonly used in manufacturing for quality control?",
+      options: [
+        "Computer Vision",
+        "Natural Language Processing",
+        "Speech Recognition",
+      ],
+      correctAnswer: "Computer Vision",
+    },
+    {
+      question: "How is predictive maintenance achieved using AI?",
+      options: [
+        "By analyzing data to predict equipment failures.",
+        "By replacing all manual work with robots.",
+        "By scheduling maintenance manually.",
+      ],
+      correctAnswer: "By analyzing data to predict equipment failures.",
+    },
+    {
+      question: "What is a key benefit of AI in supply chain optimization?",
+      options: [
+        "Reducing costs by optimizing inventory and logistics.",
+        "Eliminating all human jobs.",
+        "Building new factories automatically.",
+      ],
+      correctAnswer: "Reducing costs by optimizing inventory and logistics.",
+    },
   ];
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -127,11 +277,17 @@ const questions = [
     if (submitButton && quizContainer && resultDiv) {
       submitButton.addEventListener("click", () => {
         let score = 0;
+        let allAnswered = true;
 
         questions.forEach((question, index) => {
           const selectedOption = document.querySelector<HTMLInputElement>(
             `input[name="q${index + 1}"]:checked`
           );
+
+          // Check if all questions are answered
+          if (!selectedOption) {
+            allAnswered = false;
+          }
 
           if (
             selectedOption &&
@@ -141,29 +297,34 @@ const questions = [
           }
         });
 
+        if (!allAnswered) {
+          alert("Please answer all questions before submitting the quiz.");
+          return; // Stop the quiz from submitting
+        }
+
         // Replace the quiz content with the result
         quizContainer.innerHTML = `
-          <div class="card">
-            <h2>Quiz Completed!</h2>
-            <p>You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.</p>
-            <p>Thank you for participating in the Introduction to AI Quiz!</p>
-            <a href="/" class="home" style="
-              display: block;
-              width: 200px;
-              margin: 2rem auto;
-              padding: 0.75rem 1rem;
-              font-size: 1rem;
-              color: #fff;
-              background: linear-gradient(135deg, #3245ff, #bc52ee);
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-              transition: all 0.3s ease-in-out;">
-              Get Back to the Home Page
-              </a>
-          </div>
-        `;
+        <div class="card">
+          <h2>Quiz Completed!</h2>
+          <p>You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.</p>
+          <p>Thank you for participating in the Introduction to AI Quiz!</p>
+          <a href="/quizzes" class="home" style="
+            display: block;
+            width: 20%;
+            margin: 2rem auto;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            color: #fff;
+            background: linear-gradient(135deg, #3245ff, #bc52ee);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;">
+            Get Back to the Quizes
+          </a>
+        </div>
+      `;
 
         // Optionally, style the result box
         resultDiv.textContent = "";
@@ -174,7 +335,6 @@ const questions = [
     }
   });
 </script>
-
 
 <style>
   /* General Styles */
@@ -264,4 +424,3 @@ const questions = [
     max-width: 800px;
   }
 </style>
-

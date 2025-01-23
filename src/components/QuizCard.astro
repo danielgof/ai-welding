@@ -8,7 +8,10 @@ const { description } = Astro.props;
   <div class="grid-itemr">
     <h3>{title}</h3>
     <p>{description}</p>
-    <a class="start-quiz-btn" href={"/" + title.replaceAll(" ", "_").toLowerCase()}>Start Quiz</a>
+    <a
+      class="start-quiz-btn"
+      href={"/" + title.replaceAll(" ", "_").toLowerCase()}>Start Quiz</a
+    >
   </div>
 </li>
 
@@ -43,5 +46,31 @@ const { description } = Astro.props;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 1rem 0;
     padding: 1.5rem;
+  }
+  .start-quiz-btn {
+    display: inline-block;
+    background: #ffffff; /* Coral color for the button */
+    color: #000000; /* White text */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition:
+      background 0.3s,
+      transform 0.2s; /* Smooth transitions for hover effects */
+  }
+
+  .start-quiz-btn:hover {
+    color: #ffffff;
+    background: #1d3557; /* Darker coral for hover effect */
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+
+  .start-quiz-btn:active {
+    background: #ffffff; /* Slightly different color on active */
+    transform: translateY(0); /* Reset lift when clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on active */
   }
 </style>

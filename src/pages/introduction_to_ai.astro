@@ -43,15 +43,6 @@ const questions = [
     correctAnswer: "Advancements in Deep Learning and Neural Networks",
   },
   {
-    question: "What is Narrow AI?",
-    options: [
-      "AI designed to perform a specific task.",
-      "AI that mimics human intelligence entirely.",
-      "AI that can surpass human intelligence.",
-    ],
-    correctAnswer: "AI designed to perform a specific task.",
-  },
-  {
     question: "What is the main difference between General AI and Super AI?",
     options: [
       "General AI equals human intelligence, Super AI surpasses it.",
@@ -195,15 +186,6 @@ const questions = [
       correctAnswer: "Advancements in Deep Learning and Neural Networks",
     },
     {
-      question: "What is Narrow AI?",
-      options: [
-        "AI designed to perform a specific task.",
-        "AI that mimics human intelligence entirely.",
-        "AI that can surpass human intelligence.",
-      ],
-      correctAnswer: "AI designed to perform a specific task.",
-    },
-    {
       question: "What is the main difference between General AI and Super AI?",
       options: [
         "General AI equals human intelligence, Super AI surpasses it.",
@@ -278,6 +260,7 @@ const questions = [
       submitButton.addEventListener("click", () => {
         let score = 0;
         let allAnswered = true;
+        const feedback: any[] = [];
 
         questions.forEach((question, index) => {
           const selectedOption = document.querySelector<HTMLInputElement>(
@@ -294,6 +277,14 @@ const questions = [
             selectedOption.value === question.correctAnswer
           ) {
             score++;
+          } else {
+            feedback.push({
+              question: question.question,
+              selectedAnswer: selectedOption
+                ? selectedOption.value
+                : "No answer",
+              correctAnswer: question.correctAnswer,
+            });
           }
         });
 
@@ -303,10 +294,24 @@ const questions = [
         }
 
         // Replace the quiz content with the result
+        let feedbackHTML = feedback
+          .map(
+            (item) => `
+            <li>
+              <h3>${item.question}</h3>
+              <p>Your Answer: <strong>${item.selectedAnswer}</strong></p>
+              <p>Correct Answer: <strong>${item.correctAnswer}</strong></p>
+            </li>
+          `
+          )
+          .join("");
+
         quizContainer.innerHTML = `
         <div class="card">
           <h2>Quiz Completed!</h2>
           <p>You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.</p>
+          <h3>Review of Incorrect Answers:</h3>
+          <ol>${feedbackHTML}</ol>
           <p>Thank you for participating in the Introduction to AI Quiz!</p>
           <a href="/quizzes" class="home" style="
             display: block;
@@ -321,12 +326,11 @@ const questions = [
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;">
-            Get Back to the Quizes
+            Get Back to the Quizzes
           </a>
         </div>
       `;
 
-        // Optionally, style the result box
         resultDiv.textContent = "";
         submitButton.remove(); // Hide the button after submission
       });

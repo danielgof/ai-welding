@@ -22,7 +22,7 @@ const questions = [
   {
     question: 'Who is known as the "Father of AI"?',
     options: ["Alan Turing", "John McCarthy", "Elon Musk"],
-    correctAnswer: "John McCarthy",
+    correctAnswer: "Alan Turing",
   },
   {
     question: "Which event marked the birth of AI as a field?",
@@ -165,7 +165,7 @@ const questions = [
     {
       question: 'Who is known as the "Father of AI"?',
       options: ["Alan Turing", "John McCarthy", "Elon Musk"],
-      correctAnswer: "John McCarthy",
+      correctAnswer: "Alan Turing",
     },
     {
       question: "Which event marked the birth of AI as a field?",
@@ -299,8 +299,8 @@ const questions = [
             (item) => `
             <li>
               <h3>${item.question}</h3>
-              <p>Your Answer: <strong>${item.selectedAnswer}</strong></p>
-              <p>Correct Answer: <strong>${item.correctAnswer}</strong></p>
+              <p style="color: red; font-weight: bold;">Your Answer: <strong>${item.selectedAnswer}</strong></p>
+              <p style="color: green; font-weight: bold;">Correct Answer: <strong>${item.correctAnswer}</strong></p>
             </li>
           `
           )

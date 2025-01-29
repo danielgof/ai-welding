@@ -1,6 +1,6 @@
 ---
 import QuizCard from "../components/QuizCard.astro";
-import LayoutExternal from "../layouts/LayoutExternal.astro";
+import Layout from "../layouts/Layout.astro";
 const quizzes = [
   {
     title: "Introduction to AI",
@@ -25,7 +25,7 @@ const quizzes = [
 ];
 ---
 
-<LayoutExternal>
+<Layout>
   <section class="course-grid">
     <ul class="grid-container">
       {
@@ -35,7 +35,7 @@ const quizzes = [
       }
     </ul>
   </section>
-</LayoutExternal>
+</Layout>
 
 <style>
   ul {
@@ -44,8 +44,8 @@ const quizzes = [
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem; /* Adjusts spacing between grid items */
-    justify-items: stretch; /* Ensures rows are filled completely */
+    gap: 1rem;
+    justify-items: stretch;
   }
   li {
     background-color: #f0f0f0;

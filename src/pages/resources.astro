@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const meetings = [
+  {
+    href: "/presentations/Meeting_1_Introduction_to_AI.pptx",
+    label: "Introduction to Artificial Intelligence",
+  },
+  { href: "/placeholder", label: "Python Fundamentals for Welding Engineers" },
+  {
+    href: "/placeholder",
+    label: "Linear Regression for Welding Data Analysis",
+  },
+  { href: "/placeholder", label: "Basic AI Algorithms for Welding Engineers" },
+];
+---
+
+<Layout>
+  <div id="container">
+    <section class="hero">
+      <h1>Resources for AI in Welding Engineering</h1>
+      <p>
+        Explore useful materials, tools, and references to enhance your learning
+        experience in AI applications for welding.
+      </p>
+    </section>
+
+    <section class="section" id="syllabus">
+      <h2>Syllabus</h2>
+      <div class="card">
+        <ul>
+          <li>
+            <a href="/schedule.pdf"
+              >Introduction to AI for Welding Engineers (PDF)</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="presentations">
+      <h2>Presentations</h2>
+      <div class="card">
+        <ul>
+          {
+            meetings.map((meeting) => (
+              <li>
+                <a href={meeting.href}>{meeting.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+  }
+  #container {
+    background: linear-gradient(135deg, #3245ff, #bc52ee);
+    padding: 2rem;
+  }
+  .hero {
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+  }
+  .section {
+    padding: 2rem;
+  }
+  .section h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    padding: 1.5rem;
+  }
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+</style>

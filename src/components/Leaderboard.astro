@@ -1,0 +1,28 @@
+<section>
+  <h1>Leaderboard</h1>
+  <table id="leaderboard"></table>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("/data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const leaderboard = document.getElementById("leaderboard");
+        if (!leaderboard) {
+          console.error("Leaderboard element not found");
+          return;
+        }
+        leaderboard.innerHTML = data.leaderboard
+          .map(
+            (player: { name: any; score: any }) =>
+              `<tr>
+                <td>${player.name}</td>
+                <td>${player.score}</td>  
+              </tr>`
+          )
+          .join("");
+      })
+      .catch((error) => console.error("Error:", error));
+  });
+</script>

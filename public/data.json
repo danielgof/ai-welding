@@ -1,0 +1,29 @@
+{
+  "leaderboard": [
+    {
+      "name": "Alice",
+      "score": 95,
+      "date": "2025-02-01T10:15:30Z"
+    },
+    {
+      "name": "Bob",
+      "score": 89,
+      "date": "2025-02-01T09:45:20Z"
+    },
+    {
+      "name": "Charlie",
+      "score": 92,
+      "date": "2025-02-01T08:30:10Z"
+    },
+    {
+      "name": "David",
+      "score": 87,
+      "date": "2025-02-01T11:00:05Z"
+    },
+    {
+      "name": "Emma",
+      "score": 98,
+      "date": "2025-02-01T12:20:40Z"
+    }
+  ]
+}

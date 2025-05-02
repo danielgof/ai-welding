@@ -1,27 +1,420 @@
-<div class="container">
-  <h1>This page is under construction.</h1>
-  <p>Please check back soon for updates.</p>
-</div>
+---
+import Layout from "../layouts/Layout.astro";
+
+const questions = [
+  {
+    question:
+      "What is the primary goal of supervised learning in welding applications?",
+    options: [
+      "To discover hidden patterns in unlabeled data",
+      "To classify or predict outcomes based on labeled welding data",
+      "To optimize reward through interaction with the environment",
+    ],
+    correctAnswer:
+      "To classify or predict outcomes based on labeled welding data",
+  },
+  {
+    question:
+      "Which AI algorithm maximizes the margin between data classes using hyperplanes?",
+    options: [
+      "Decision Trees",
+      "Support Vector Machines (SVM)",
+      "K-means Clustering",
+    ],
+    correctAnswer: "Support Vector Machines (SVM)",
+  },
+  {
+    question:
+      "In welding engineering, what is a common application of Support Vector Machines (SVM)?",
+    options: [
+      "Real-time optimization of welding parameters",
+      "Classifying weld defects like porosity and cracks",
+      "Clustering weld samples by hardness",
+    ],
+    correctAnswer: "Classifying weld defects like porosity and cracks",
+  },
+  {
+    question:
+      "Which AI algorithm recursively splits data based on feature thresholds?",
+    options: ["Decision Trees", "Reinforcement Learning", "K-means Clustering"],
+    correctAnswer: "Decision Trees",
+  },
+  {
+    question:
+      "Why are Decision Trees useful in real-time welding decision support?",
+    options: [
+      "They maximize margins in high-dimensional data",
+      "Their easy interpretation makes them suitable for immediate decision-making",
+      "They cluster similar weld samples by geometry",
+    ],
+    correctAnswer:
+      "Their easy interpretation makes them suitable for immediate decision-making",
+  },
+  {
+    question:
+      "What type of machine learning involves discovering patterns without labeled output data?",
+    options: [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+    ],
+    correctAnswer: "Unsupervised Learning",
+  },
+  {
+    question:
+      "Which algorithm is commonly used to group weld samples based on characteristics like bead geometry and hardness?",
+    options: [
+      "K-means Clustering",
+      "Support Vector Machines (SVM)",
+      "Decision Trees",
+    ],
+    correctAnswer: "K-means Clustering",
+  },
+  {
+    question:
+      "What is the objective of Reinforcement Learning (RL) in welding applications?",
+    options: [
+      "To classify weld defects",
+      "To optimize real-time welding parameters like current and speed",
+      "To split data recursively by feature thresholds",
+    ],
+    correctAnswer:
+      "To optimize real-time welding parameters like current and speed",
+  },
+  {
+    question: "In Reinforcement Learning, what is the role of the 'agent'?",
+    options: [
+      "To label data for supervised learning",
+      "To cluster similar data points",
+      "To interact with the environment and maximize reward",
+    ],
+    correctAnswer: "To interact with the environment and maximize reward",
+  },
+  {
+    question:
+      "Which machine learning technique is particularly well-suited for high-dimensional datasets in non-destructive testing (NDT)?",
+    options: [
+      "K-means Clustering",
+      "Support Vector Machines (SVM)",
+      "Reinforcement Learning",
+    ],
+    correctAnswer: "Support Vector Machines (SVM)",
+  },
+];
+---
+
+<Layout>
+  <section>
+    <h1>Basic AI Algorithms Quiz</h1>
+
+    <ol>
+      {
+        questions.map((question, index) => (
+          <li>
+            <h3>{question.question}</h3>
+            <ol type="a">
+              {question.options.map((option, optionIndex) => (
+                <li>
+                  <input type="radio" name={`q${index + 1}`} value={option} />
+                  {option}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))
+      }
+    </ol>
+
+    <button class="alert">Submit Quiz</button>
+
+    <div id="result"></div>
+  </section>
+</Layout>
+
+<script>
+  const questions = [
+    {
+      question:
+        "What is the primary goal of supervised learning in welding applications?",
+      options: [
+        "To discover hidden patterns in unlabeled data",
+        "To classify or predict outcomes based on labeled welding data",
+        "To optimize reward through interaction with the environment",
+      ],
+      correctAnswer:
+        "To classify or predict outcomes based on labeled welding data",
+    },
+    {
+      question:
+        "Which AI algorithm maximizes the margin between data classes using hyperplanes?",
+      options: [
+        "Decision Trees",
+        "Support Vector Machines (SVM)",
+        "K-means Clustering",
+      ],
+      correctAnswer: "Support Vector Machines (SVM)",
+    },
+    {
+      question:
+        "In welding engineering, what is a common application of Support Vector Machines (SVM)?",
+      options: [
+        "Real-time optimization of welding parameters",
+        "Classifying weld defects like porosity and cracks",
+        "Clustering weld samples by hardness",
+      ],
+      correctAnswer: "Classifying weld defects like porosity and cracks",
+    },
+    {
+      question:
+        "Which AI algorithm recursively splits data based on feature thresholds?",
+      options: [
+        "Decision Trees",
+        "Reinforcement Learning",
+        "K-means Clustering",
+      ],
+      correctAnswer: "Decision Trees",
+    },
+    {
+      question:
+        "Why are Decision Trees useful in real-time welding decision support?",
+      options: [
+        "They maximize margins in high-dimensional data",
+        "Their easy interpretation makes them suitable for immediate decision-making",
+        "They cluster similar weld samples by geometry",
+      ],
+      correctAnswer:
+        "Their easy interpretation makes them suitable for immediate decision-making",
+    },
+    {
+      question:
+        "What type of machine learning involves discovering patterns without labeled output data?",
+      options: [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Reinforcement Learning",
+      ],
+      correctAnswer: "Unsupervised Learning",
+    },
+    {
+      question:
+        "Which algorithm is commonly used to group weld samples based on characteristics like bead geometry and hardness?",
+      options: [
+        "K-means Clustering",
+        "Support Vector Machines (SVM)",
+        "Decision Trees",
+      ],
+      correctAnswer: "K-means Clustering",
+    },
+    {
+      question:
+        "What is the objective of Reinforcement Learning (RL) in welding applications?",
+      options: [
+        "To classify weld defects",
+        "To optimize real-time welding parameters like current and speed",
+        "To split data recursively by feature thresholds",
+      ],
+      correctAnswer:
+        "To optimize real-time welding parameters like current and speed",
+    },
+    {
+      question: "In Reinforcement Learning, what is the role of the 'agent'?",
+      options: [
+        "To label data for supervised learning",
+        "To cluster similar data points",
+        "To interact with the environment and maximize reward",
+      ],
+      correctAnswer: "To interact with the environment and maximize reward",
+    },
+    {
+      question:
+        "Which machine learning technique is particularly well-suited for high-dimensional datasets in non-destructive testing (NDT)?",
+      options: [
+        "K-means Clustering",
+        "Support Vector Machines (SVM)",
+        "Reinforcement Learning",
+      ],
+      correctAnswer: "Support Vector Machines (SVM)",
+    },
+  ];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const submitButton =
+      document.querySelector<HTMLButtonElement>("button.alert");
+    const quizContainer = document.querySelector("ol"); // Quiz container
+    const resultDiv = document.getElementById("result");
+
+    if (submitButton && quizContainer && resultDiv) {
+      submitButton.addEventListener("click", () => {
+        let score = 0;
+        let allAnswered = true;
+        const feedback: any[] = [];
+
+        questions.forEach((question, index) => {
+          const selectedOption = document.querySelector<HTMLInputElement>(
+            `input[name="q${index + 1}"]:checked`
+          );
+
+          // Check if all questions are answered
+          if (!selectedOption) {
+            allAnswered = false;
+          }
+
+          if (
+            selectedOption &&
+            selectedOption.value === question.correctAnswer
+          ) {
+            score++;
+          } else {
+            feedback.push({
+              question: question.question,
+              selectedAnswer: selectedOption
+                ? selectedOption.value
+                : "No answer",
+              correctAnswer: question.correctAnswer,
+            });
+          }
+        });
+
+        if (!allAnswered) {
+          alert("Please answer all questions before submitting the quiz.");
+          return; // Stop the quiz from submitting
+        }
+
+        // Replace the quiz content with the result
+        let feedbackHTML = feedback
+          .map(
+            (item) => `
+            <li>
+              <h3>${item.question}</h3>
+              <p style="color: red; font-weight: bold;">Your Answer: <strong>${item.selectedAnswer}</strong></p>
+              <p style="color: green; font-weight: bold;">Correct Answer: <strong>${item.correctAnswer}</strong></p>
+            </li>
+          `
+          )
+          .join("");
+
+        quizContainer.innerHTML = `
+        <div class="card">
+          <h2>Quiz Completed!</h2>
+          <p>You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>.</p>
+          <h3>Review of Incorrect Answers:</h3>
+          <ol>${feedbackHTML}</ol>
+          <p>Thank you for participating in the Introduction to AI Quiz!</p>
+          <a href="/quizzes" class="home" style="
+            display: block;
+            width: 20%;
+            margin: 2rem auto;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            color: #fff;
+            background: linear-gradient(135deg, #3245ff, #bc52ee);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;">
+            Get Back to the Quizzes
+          </a>
+        </div>
+      `;
+
+        // Append Leaderboard dynamically
+        resultDiv.innerHTML = "<Leaderboard />";
+
+        resultDiv.textContent = "";
+        submitButton.remove(); // Hide the button after submission
+      });
+    } else {
+      console.error("Submit button or quiz container is missing in the DOM.");
+    }
+  });
+</script>
 
 <style>
+  /* General Styles */
   body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
-  }
-  .container {
-    text-align: center;
-  }
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    padding: 0;
+    background-color: #f8f9fa;
     color: #333;
   }
-  p {
+
+  h1 {
+    text-align: center;
+    margin-top: 2rem;
+    color: #3245ff;
+    font-size: 2.5rem;
+  }
+
+  ol {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 1.5rem;
+  }
+
+  li h3 {
     font-size: 1.2rem;
-    color: #666;
+    margin-bottom: 0.5rem;
+    color: #3245ff;
+  }
+
+  li ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.5rem;
+  }
+
+  li ol li {
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="radio"] {
+    margin-right: 0.5rem;
+  }
+
+  /* Button Styles */
+  button.alert {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #3245ff, #bc52ee);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  button.alert:hover {
+    background: linear-gradient(135deg, #1f3bff, #a742db);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Result Box */
+  #result {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #28a745;
+    margin-top: 2rem;
+  }
+
+  /* Card Style */
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem auto;
+    max-width: 800px;
   }
 </style>

@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const BASE_URL = "/ai-welding";
+
 const meetings = [
   {
     href: "/presentations/Meeting_1_Introduction_to_AI.pptx",
@@ -11,11 +13,11 @@ const meetings = [
     label: "Python Fundamentals for Welding Engineers(slides)",
   },
   {
-    href: "Meeting_2_Python_Fundamentals_for_Welding_Engineers_Expanded.ipynb",
+    href: "/Meeting_2_Python_Fundamentals_for_Welding_Engineers_Expanded.ipynb",
     label: "Python Fundamentals for Welding Engineers(code)",
   },
   {
-    href: "how_to_get_started_colab.pdf",
+    href: "/how_to_get_started_colab.pdf",
     label: "Python Fundamentals for Welding Engineers(instruction for Colab)",
   },
   {
@@ -23,7 +25,7 @@ const meetings = [
     label: "Linear Regression for Welding Data Analysis(slides)",
   },
   {
-    href: "Meeting_3_Linear_Regression_Welding_Analysis.ipynb",
+    href: "/Meeting_3_Linear_Regression_Welding_Analysis.ipynb",
     label: "Linear Regression for Welding Data Analysis(code)",
   },
   {
@@ -48,7 +50,7 @@ const meetings = [
       <div class="card">
         <ul>
           <li>
-            <a href="/schedule.pdf"
+            <a href={BASE_URL + "/schedule.pdf"}
               >Introduction to AI for Welding Engineers (PDF)</a
             >
           </li>
@@ -63,7 +65,7 @@ const meetings = [
           {
             meetings.map((meeting) => (
               <li>
-                <a href={meeting.href}>{meeting.label}</a>
+                <a href={BASE_URL + meeting.href}>{meeting.label}</a>
               </li>
             ))
           }

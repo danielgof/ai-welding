@@ -1,4 +1,6 @@
 ---
+const BASE_URL = "/ai-welding";
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/about_ai", label: "About AI" },
@@ -10,7 +12,7 @@ const links = [
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <a href="/">AI for Welding Engineers</a>
+      <a href={BASE_URL + "/"}>AI for Welding Engineers</a>
     </div>
     <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
     <div class="dropdown">
@@ -18,7 +20,7 @@ const links = [
         {
           links.map((link) => (
             <li>
-              <a href={link.href}>{link.label}</a>
+              <a href={BASE_URL + link.href}>{link.label}</a>
             </li>
           ))
         }
